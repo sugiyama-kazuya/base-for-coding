@@ -8,8 +8,8 @@ const imageminPngquant = require("imagemin-pngquant");
 const imageminSvgo = require("imagemin-svgo");
 
 const srcPath = {
-  css: "./src/scss/**/*.scss",
-  js: "./src/js/*.js",
+  css: "./src/styles/*.scss",
+  js: "./src/scripts/*.js",
   img: "./src/images/*",
   html: "./*.html",
 };
@@ -101,10 +101,11 @@ function startAppServer() {
 }
 
 function watchCss() {
-  watch(srcPath.css, styles);
+  watch("./src/**/*.scss", styles);
 }
 
 const serve = series(parallel(styles, series(scripts)), startAppServer);
 exports.comp = imgImagemin;
 exports.serve = serve;
 exports.watch = watchCss;
+exports.style = styles;
