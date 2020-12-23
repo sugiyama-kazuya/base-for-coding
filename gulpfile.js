@@ -94,14 +94,14 @@ function startAppServer() {
     },
   });
 
-  watch(srcPath.css, styles);
+  watch("./src/styles/**/*.scss", styles);
   watch(srcPath.js, scripts);
   watch(srcPath.html).on("change", server.reload);
-  watch(srcPath.css).on("change", server.reload);
+  watch("./src/styles/**/*.scss").on("change", server.reload);
 }
 
 function watchCss() {
-  watch("./src/**/*.scss", styles);
+  watch("./src/styles/**/*.scss", styles);
 }
 
 const serve = series(parallel(styles, series(scripts)), startAppServer);
